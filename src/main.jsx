@@ -1,0 +1,37 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { createHashRouter, RouterProvider } from "react-router";
+import HomePage from "./components/home_page/HomePage.jsx";
+import Products from "./components/Products.jsx";
+import Product from "./components/Product.jsx";
+import Cart from "./components/Cart.jsx";
+
+const router = createHashRouter([
+  {
+    path: "/",
+    Component: App,
+    children: [
+      { index: true, Component: HomePage },
+      {
+        path: "/products",
+        Component: Products,
+      },
+      {
+        path: "/product:id",
+        Component: Product,
+      },
+      {
+        path: "/cart",
+        Component: Cart,
+      },
+    ],
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
+);

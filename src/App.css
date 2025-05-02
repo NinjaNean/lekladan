@@ -1,0 +1,55 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+
+  .hamburger-menu {
+    background-color: var(--green-color);
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100dvh;
+    width: 70dvw;
+    transition: all 0.5s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 0px 15px;
+
+    padding: 5rem 1rem;
+
+    &.open-menu {
+      left: 0;
+    }
+  }
+
+  .hamburger-button {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+
+    &:hover {
+      transform: rotateY(180deg);
+    }
+
+    &:active {
+      .hamburger-menu {
+        left: 0;
+      }
+    }
+  }
+
+  .logo {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: black;
+  }
+
+  .cart-button {
+    cursor: pointer;
+    transition: transform 0.8s;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
