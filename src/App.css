@@ -3,18 +3,19 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem;
+  background-color: var(--orange-color);
 
   .hamburger-menu {
     background-color: var(--green-color);
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -150%;
     height: 100dvh;
     width: 100dvw;
     max-width: 400px;
     transition: all 0.5s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.35) 5px 0px 15px;
-
+    z-index: 1;
     padding: 5rem;
 
     &.open-menu {
@@ -24,20 +25,13 @@ header {
 
   .hamburger-button {
     cursor: pointer;
-    z-index: 1;
+    z-index: 2;
 
     &:active {
       .hamburger-menu {
         left: 0;
       }
     }
-  }
-
-  .logo {
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2.5rem;
-    color: black;
   }
 
   .cart-button {
@@ -47,5 +41,32 @@ header {
     &:hover {
       scale: 1.1;
     }
+  }
+}
+
+.logo {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2.5rem;
+  color: black;
+}
+
+footer {
+  background-color: var(--pink-color);
+
+  section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    margin: 0 1rem;
+    border-bottom: 1px solid black;
+  }
+
+  > p {
+    text-align: center;
+    padding: 2rem;
   }
 }

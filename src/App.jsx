@@ -5,9 +5,15 @@ import crossIcon from "./assets/iconamoon_close-bold.svg";
 import cartIcon from "./assets/mdi_cart-outline.svg";
 import HamburgerMenu from "./components/HamburgerMenu";
 import { useMenuStore } from "./data/store";
+import { useEffect } from "react";
+import { getSummerToys } from "./data/crud";
 
 function App() {
-  const { toggleMenu, isMenuOpen } = useMenuStore();
+  const { toggleMenu, isMenuOpen, setSummerToys } = useMenuStore();
+
+  useEffect(() => {
+    getSummerToys(setSummerToys);
+  }, []);
 
   return (
     <>
@@ -32,7 +38,20 @@ function App() {
 
       <Outlet />
 
-      <footer></footer>
+      <footer>
+        <section>
+          <NavLink to={"/"} className="logo">
+            Leklådan
+          </NavLink>
+
+          <div>
+            <h2>Kontakta oss</h2>
+            <p>leklada@hotmail.se</p>
+            <p>031 01 23 34</p>
+          </div>
+        </section>
+        <p>© 2025 Leklådan</p>
+      </footer>
     </>
   );
 }

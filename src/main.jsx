@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App.jsx";
 import { createHashRouter, RouterProvider } from "react-router";
 import HomePage from "./components/home_page/HomePage.jsx";
-import Products from "./components/Products.jsx";
-import Product from "./components/Product.jsx";
+import Products from "./components/product/Products.jsx";
+// import Product from "./components/product/Products.jsx";
 import Cart from "./components/Cart.jsx";
 
 const router = createHashRouter([
@@ -18,10 +18,10 @@ const router = createHashRouter([
         path: "/products",
         Component: Products,
       },
-      {
-        path: "/product:id",
-        Component: Product,
-      },
+      //   {
+      //     path: "/product:id",
+      //     Component: Product,
+      //   },
       {
         path: "/cart",
         Component: Cart,
