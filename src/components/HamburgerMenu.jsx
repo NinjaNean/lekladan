@@ -7,7 +7,7 @@ function HamburgerMenu() {
 
   return (
     <div className={isMenuOpen ? "hamburger-menu open-menu" : "hamburger-menu"}>
-      <NavLink to={"/products"}>Alla produkter</NavLink>
+      <NavLink to={"/products"}>ALLA PRODUKTER</NavLink>
     </div>
   );
 }
