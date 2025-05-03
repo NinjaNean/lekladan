@@ -1,11 +1,11 @@
 export const summerToys = [
-  //   {
-  //     name: "Vattenpistol",
-  //     description: "Spruta vatten på kompisarna i sommarhettan!",
-  //     price: 79,
-  //     discount: 10,
-  //     categories: ["Vattenlek", "Utomhuslek"],
-  //   },
+  {
+    name: "Vattenpistol",
+    description: "Spruta vatten på kompisarna i sommarhettan!",
+    price: 79,
+    discount: 10,
+    categories: ["Vattenlek", "Utomhuslek"],
+  },
   {
     name: "Hink och spade",
     description: "Bygg fantastiska sandslott på stranden.",
