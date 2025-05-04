@@ -12,18 +12,24 @@ function Products() {
   }, [storeToysList]);
 
   const sortToysBy = (e) => {
-    let sorted = [...storeToysList];
+    let newList = storeToysList.map((toy) => {
+      const discountFactor = (100 - toy.discount) / 100;
+      const discountedPrice = Math.round(toy.price * discountFactor);
+      return { ...toy, sortedPrice: discountedPrice };
+    });
+
+    let sorted = [...newList];
 
     switch (e) {
       case "price-asc": {
         sorted.sort((a, b) => {
-          return a.price - b.price;
+          return a.sortedPrice - b.sortedPrice;
         });
         break;
       }
       case "price-desc": {
         sorted.sort((a, b) => {
-          return b.price - a.price;
+          return b.sortedPrice - a.sortedPrice;
         });
 
         break;

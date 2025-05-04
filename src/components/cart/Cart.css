@@ -1,10 +1,11 @@
 .cart-page {
+  margin: 1rem;
+
   .checkout-offers {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: center;
-    margin: 1rem;
     flex-wrap: wrap;
 
     p {
@@ -18,4 +19,27 @@
 }
 
 .cart {
+  .cart-product {
+    border: 1px solid black;
+    width: 100%;
+    max-width: fit-content;
+    padding: 1rem;
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+    }
+
+    .cart-buttons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      button {
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
 }

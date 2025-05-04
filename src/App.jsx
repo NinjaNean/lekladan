@@ -9,11 +9,15 @@ import { getSummerToys } from "./data/crud";
 import { useMenuStore } from "./data/store";
 
 function App() {
-  const { toggleMenu, isMenuOpen, setSummerToys } = useMenuStore();
+  const { toggleMenu, isMenuOpen, setSummerToys, cartList } = useMenuStore();
 
   useEffect(() => {
     getSummerToys(setSummerToys);
   }, []);
+
+  const productInCart = () => {
+    return cartList.reduce((sum, toy) => sum + toy.quantity, 0);
+  };
 
   return (
     <>
@@ -31,7 +35,8 @@ function App() {
           Leklådan
         </NavLink>
 
-        <NavLink to={"/cart"}>
+        <NavLink className="cart-button-flex" to={"/cart"}>
+          {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
           <img className="cart-button" src={cartIcon} alt="cart store icon" />
         </NavLink>
       </header>

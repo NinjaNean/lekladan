@@ -25,6 +25,19 @@ const useMenuStore = create((set, get) => ({
       }));
     }
   },
+
+  removeFromCart: (toy) => {
+    const { cartList } = get();
+    let result = cartList.find((item) => item.id === toy.id);
+
+    const updateCart = cartList.map((item) =>
+      item.id === result.id ? { ...item, quantity: item.quantity - 1 } : item
+    );
+
+    set(() => ({
+      cartList: updateCart,
+    }));
+  },
 }));
 
 export { useMenuStore };

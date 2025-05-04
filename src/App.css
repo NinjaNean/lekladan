@@ -34,12 +34,35 @@ header {
     }
   }
 
-  .cart-button {
-    cursor: pointer;
+  .cart-button-flex {
+    text-decoration: none;
     transition: transform 0.8s;
+    position: relative;
+
+    .cart-quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      position: absolute;
+      right: -5px;
+      top: -5px;
+      font-size: 20px;
+    }
+
+    .cart-button {
+      cursor: pointer;
+    }
 
     &:hover {
       scale: 1.1;
+    }
+
+    &:active {
+      color: black;
     }
   }
 }
