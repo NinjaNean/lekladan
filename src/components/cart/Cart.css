@@ -1,0 +1,21 @@
+.cart-page {
+  .checkout-offers {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem;
+    flex-wrap: wrap;
+
+    p {
+      font-size: 24px;
+    }
+
+    img {
+      height: 50px;
+    }
+  }
+}
+
+.cart {
+}

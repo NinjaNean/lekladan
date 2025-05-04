@@ -4,7 +4,6 @@ import "./HomePage.css";
 import { useMenuStore } from "../../data/store";
 import Product from "../product/Product";
 import "../product/Product.css";
-import { NavLink } from "react-router";
 
 function HomePage() {
   const { storeToysList } = useMenuStore();
@@ -13,7 +12,9 @@ function HomePage() {
       <img className="hero-img" src={heroImg} alt="" />
 
       <section className="selected-products">
-        <div className="products">{storeToysList.map((toy) => toy.discount > 14 && <Product toy={toy} />)}</div>
+        <div className="products">
+          {storeToysList.map((toy) => toy.discount > 14 && <Product key={toy.id} toy={toy} />)}
+        </div>
       </section>
     </main>
   );

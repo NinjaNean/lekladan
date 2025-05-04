@@ -29,11 +29,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 400px;
 
   .discount {
     background-color: var(--pink-color);
     max-width: fit-content;
     padding: 1.5rem;
+    aspect-ratio: 1/1;
     border-radius: 50%;
     position: absolute;
   }

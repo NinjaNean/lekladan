@@ -4,9 +4,9 @@ import menuIcon from "./assets/jam_menu.svg";
 import crossIcon from "./assets/iconamoon_close-bold.svg";
 import cartIcon from "./assets/mdi_cart-outline.svg";
 import HamburgerMenu from "./components/HamburgerMenu";
-import { useMenuStore } from "./data/store";
 import { useEffect } from "react";
 import { getSummerToys } from "./data/crud";
+import { useMenuStore } from "./data/store";
 
 function App() {
   const { toggleMenu, isMenuOpen, setSummerToys } = useMenuStore();
