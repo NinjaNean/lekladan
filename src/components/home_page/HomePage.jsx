@@ -1,19 +1,34 @@
 import React from "react";
 import heroImg from "../../assets/pexels-photo-6137955.jpeg";
 import "./HomePage.css";
-import { useMenuStore } from "../../data/store";
-import Product from "../product/Product";
 import "../product/Product.css";
+import { NavLink } from "react-router";
 
 function HomePage() {
-  const { storeToysList } = useMenuStore();
   return (
     <main className="home-page">
       <img className="hero-img" src={heroImg} alt="" />
 
-      <section className="selected-products">
-        <div className="products">
-          {storeToysList.map((toy) => toy.discount > 14 && <Product key={toy.id} toy={toy} />)}
+      <section className="lekladan-presentation">
+        <img
+          src="https://media.istockphoto.com/id/1470000848/photo/black-kids-children-and-blowing-bubbles-at-park-having-fun-and-bonding-girls-happy-sisters.jpg?s=612x612&w=0&k=20&c=mj4gWGkh4gryBxxrATYGDe8jTqR_az2dHANVe30R02k="
+          alt=""
+        />
+        <div>
+          <h1>🎉 Välkommen till Leklådan – sommarens roligaste butik!</h1>
+          <p>
+            Hos oss hittar du ett handplockat sortiment av sommarleksaker som bjuder in till lek, rörelse och glädje
+            utomhus. Oavsett om du letar efter vattenleksaker, utomhusspel eller klassiska strandfavoriter har vi något
+            för barn i alla åldrar.
+          </p>
+          <p>
+            Vi älskar lek – och vi vet att de bästa sommarminnena börjar med rätt leksaker. Leklådan är fylld med både
+            nyheter och tidlösa favoriter, och vi erbjuder snabba leveranser så att du kan komma igång med leken direkt.
+          </p>
+          <p>☀️ Gör sommaren magisk – upptäck vårt sortiment idag!</p>
+          <NavLink className="button" to={"/products"}>
+            Gå till produkterna
+          </NavLink>
         </div>
       </section>
     </main>

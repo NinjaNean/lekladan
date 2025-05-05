@@ -2,7 +2,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem;
+  padding: 1rem;
   background-color: var(--orange-color);
 
   .hamburger-menu {
@@ -35,6 +35,7 @@ header {
   }
 
   .cart-button-flex {
+    display: flex;
     text-decoration: none;
     transition: transform 0.8s;
     position: relative;
@@ -53,10 +54,6 @@ header {
       font-size: 20px;
     }
 
-    .cart-button {
-      cursor: pointer;
-    }
-
     &:hover {
       scale: 1.1;
     }
@@ -70,7 +67,7 @@ header {
 .logo {
   cursor: pointer;
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: black;
 }
 

@@ -7,6 +7,7 @@ import HamburgerMenu from "./components/HamburgerMenu";
 import { useEffect } from "react";
 import { getSummerToys } from "./data/crud";
 import { useMenuStore } from "./data/store";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { toggleMenu, isMenuOpen, setSummerToys, cartList } = useMenuStore();
@@ -21,15 +22,16 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <header>
-        <HamburgerMenu />
+        {/* <HamburgerMenu />
 
         <img
           onClick={toggleMenu}
           className="hamburger-button"
           src={isMenuOpen ? crossIcon : menuIcon}
           alt="hamburger menu icon"
-        />
+        /> */}
 
         <NavLink to={"/"} className="logo">
           Leklådan
