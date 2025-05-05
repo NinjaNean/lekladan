@@ -8,7 +8,7 @@ function Cart() {
 
   return (
     <main className="cart-page">
-      {cartList ? (
+      {cartList.length === 0 ? (
         <div className="empty-cart">
           <p>Din varukorg är tom. Hitta några fantastiska leksaker först!</p>
           <NavLink className="button" to={"/products"}>

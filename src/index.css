@@ -27,4 +27,52 @@
   text-transform: uppercase;
   color: black;
   border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #45e541;
+    }
+
+    &:active {
+      scale: 1.1;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      background-color: #45e541;
+      scale: 1.1;
+    }
+  }
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  cursor: pointer;
+  background-color: var(--yellow-color);
+  font-size: 20px;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s;
+  text-transform: uppercase;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #ffd500;
+    }
+
+    &:active {
+      scale: 1.1;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      background-color: #ffd500;
+      scale: 1.1;
+    }
+  }
 }
