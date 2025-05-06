@@ -6,7 +6,18 @@ async function getSummerToys(setSummerToys) {
   const summerToysSnapshot = await getDocs(summerToysCollection);
   const summerToysList = summerToysSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
-  setSummerToys(summerToysList);
+  const discountedToyList = summerToysList.map((toy) => {
+    if (toy.discount > 0) {
+      const discountFactor = (100 - toy.discount) / 100;
+      const discountedPrice = Math.round(toy.price * discountFactor);
+
+      return { ...toy, oldPrice: toy.price, price: discountedPrice };
+    } else {
+      return toy;
+    }
+  });
+
+  setSummerToys(discountedToyList);
 }
 
 async function addSummerToys(setSummerToys, summerToysObject) {

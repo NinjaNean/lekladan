@@ -5,7 +5,10 @@ const useMenuStore = create((set, get) => ({
   storeToysList: [],
   cartList: [],
 
-  setSummerToys: (newToy) => set(() => ({ storeToysList: newToy })),
+  setSummerToys: (newToyList) => {
+    console.log("store: ", newToyList);
+    set(() => ({ storeToysList: newToyList }));
+  },
 
   toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
 

@@ -5,31 +5,26 @@ import "./product.css";
 
 function Products() {
   const { storeToysList } = useMenuStore();
-  const [activeView, setActiveView] = useState(storeToysList);
+  const [renderedList, setRenderedList] = useState(storeToysList);
+  const [inputText, setInputText] = useState("");
 
   useEffect(() => {
-    setActiveView(storeToysList);
+    setRenderedList(storeToysList);
   }, [storeToysList]);
 
   const sortToysBy = (e) => {
-    let newList = storeToysList.map((toy) => {
-      const discountFactor = (100 - toy.discount) / 100;
-      const discountedPrice = Math.round(toy.price * discountFactor);
-      return { ...toy, sortedPrice: discountedPrice };
-    });
-
-    let sorted = [...newList];
+    let sorted = [...renderedList];
 
     switch (e) {
       case "price-asc": {
         sorted.sort((a, b) => {
-          return a.sortedPrice - b.sortedPrice;
+          return a.price - b.price;
         });
         break;
       }
       case "price-desc": {
         sorted.sort((a, b) => {
-          return b.sortedPrice - a.sortedPrice;
+          return b.price - a.price;
         });
 
         break;
@@ -66,18 +61,15 @@ function Products() {
       }
     }
 
-    setActiveView(sorted);
+    setRenderedList(sorted);
   };
 
-  const handleSearch = (search) => {
-    const result = storeToysList.filter((toy) => toy.name.toLowerCase().includes(search.toLowerCase()));
-    setActiveView(result);
-  };
+  const searchList = renderedList.filter((toy) => toy.name.toLowerCase().includes(inputText.toLowerCase()));
 
   return (
     <main className="product-page">
       <section className="search-sort">
-        <input className="search" type="text" placeholder="Sök..." onChange={(e) => handleSearch(e.target.value)} />
+        <input className="search" type="text" placeholder="Sök..." onChange={(e) => setInputText(e.target.value)} />
 
         <label className="sort-products" htmlFor="sort">
           Sortera efter
@@ -94,7 +86,7 @@ function Products() {
       </section>
 
       <div className="products">
-        {activeView.map((toy) => {
+        {searchList.map((toy) => {
           return <Product key={toy.id} toy={toy} />;
         })}
       </div>
