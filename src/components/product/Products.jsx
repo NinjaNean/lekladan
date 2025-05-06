@@ -85,11 +85,16 @@ function Products() {
         </label>
       </section>
 
-      <div className="products">
-        {searchList.map((toy) => {
-          return <Product key={toy.id} toy={toy} />;
-        })}
-      </div>
+      {searchList.length < 1 ? (
+        //Styla detta bra!!
+        <p>Din sökning gav inga resultat!</p>
+      ) : (
+        <div className="products">
+          {searchList.map((toy) => {
+            return <Product key={toy.id} toy={toy} />;
+          })}
+        </div>
+      )}
     </main>
   );
 }

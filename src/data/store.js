@@ -6,7 +6,6 @@ const useMenuStore = create((set, get) => ({
   cartList: [],
 
   setSummerToys: (newToyList) => {
-    console.log("store: ", newToyList);
     set(() => ({ storeToysList: newToyList }));
   },
 

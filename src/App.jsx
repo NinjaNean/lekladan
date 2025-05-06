@@ -13,7 +13,6 @@ function App() {
   const { toggleMenu, isMenuOpen, setSummerToys, cartList } = useMenuStore();
 
   useEffect(() => {
-    console.log("app");
     getSummerToys(setSummerToys);
   }, []);
 
