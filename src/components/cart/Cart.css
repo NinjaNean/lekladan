@@ -5,13 +5,23 @@
 .empty-cart {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
+  gap: 1rem;
   font-size: clamp(20px, 4vw, 25px);
 }
 
 .cart {
   max-width: 700px;
   margin: auto;
+
+  > h1 {
+    font-size: clamp(26px, 4vw, 34px);
+    background-color: var(--green-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    cursor: default;
+  }
 
   .cart-product {
     display: grid;
@@ -48,6 +58,10 @@
     div {
       display: flex;
       justify-content: space-between;
+
+      h3 {
+        font-size: 24px;
+      }
 
       p {
         font-size: 20px;
