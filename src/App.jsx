@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router";
 import "./App.css";
 import menuIcon from "./assets/jam_menu.svg";
-import crossIcon from "./assets/iconamoon_close-bold.svg";
+import crossIcon from "./assets/close.svg";
 import cartIcon from "./assets/mdi_cart-outline.svg";
 import HamburgerMenu from "./components/HamburgerMenu";
 import { useEffect } from "react";
