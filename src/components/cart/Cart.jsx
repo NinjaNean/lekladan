@@ -28,9 +28,6 @@ function Cart() {
           <section className="cart">
             {cartList.map((toy) => (
               <div key={toy.id} className="cart-product">
-                {/* <button className="delete-from-cart">
-                  <img src={trashCan} alt="" />
-                </button> */}
                 <img src={toy.img} alt="product img" />
 
                 <div>
