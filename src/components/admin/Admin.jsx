@@ -8,6 +8,7 @@ function Admin() {
       <table>
         <thead>
           <tr>
+            <th></th>
             <th>Bild</th>
             <th>Namn</th>
             <th>Beskrivning</th>
@@ -18,6 +19,12 @@ function Admin() {
         <tbody>
           {storeToysList.map((toy) => (
             <tr className="product-on-edit">
+              <td className="edit-buttons">
+                <p>
+                  <button>Ta bort</button>
+                </p>
+                <button>Redigera</button>
+              </td>
               <td>
                 <img src={toy.img} alt="" />
               </td>

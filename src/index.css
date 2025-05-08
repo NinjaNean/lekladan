@@ -48,7 +48,7 @@
   }
 }
 
-button:not(.delete-from-cart) {
+button:not(.delete-from-cart, .product-on-edit button) {
   width: 100%;
   padding: 0.8rem;
   cursor: pointer;

@@ -36,9 +36,7 @@ function Cart() {
                 </div>
 
                 <div className="cart-buttons">
-                  <button disabled={toy.quantity === 1} onClick={() => removeFromCart(toy)}>
-                    -
-                  </button>
+                  <button onClick={() => removeFromCart(toy)}>-</button>
                   <p>{toy.quantity}</p>
                   <button onClick={() => addToCart(toy)}>+</button>
                 </div>

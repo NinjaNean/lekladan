@@ -25,14 +25,14 @@ function App() {
     <>
       <ScrollToTop />
       <header>
-        {/* <HamburgerMenu />
+        <HamburgerMenu />
 
         <img
           onClick={toggleMenu}
           className="hamburger-button"
           src={isMenuOpen ? crossIcon : menuIcon}
           alt="hamburger menu icon"
-        /> */}
+        />
 
         <NavLink to={"/"} className="logo">
           Leklådan

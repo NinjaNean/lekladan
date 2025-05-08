@@ -59,14 +59,32 @@
   }
 
   tbody {
-    td {
-      border-bottom: 1px solid black;
-      padding: 1rem;
-      text-align: center;
-    }
+    .product-on-edit {
+      .edit-buttons {
+        border-bottom: 1px solid black;
 
-    img {
-      height: 150px;
+        button {
+          border: none;
+          background-color: transparent;
+          margin: 0.5rem;
+          cursor: pointer;
+          font-size: 20px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      td:not(.edit-buttons) {
+        border-bottom: 1px solid black;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      img {
+        height: 150px;
+      }
     }
   }
 }
