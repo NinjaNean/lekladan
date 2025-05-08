@@ -87,7 +87,9 @@ function Products() {
 
       {searchList.length < 1 ? (
         //Styla detta bra!!
-        <p>Din sökning gav inga resultat!</p>
+        <p className="no-search-results">
+          🎈 Hoppsan! Inga leksaker gömde sig bakom det ordet 🔍. Prova att leta igen – vi har massor av kul 🎁🪁✨!
+        </p>
       ) : (
         <div className="products">
           {searchList.map((toy) => {
