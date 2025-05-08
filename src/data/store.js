@@ -4,6 +4,9 @@ const useMenuStore = create((set, get) => ({
   isMenuOpen: false,
   storeToysList: [],
   cartList: [],
+  isLoggedIn: false,
+
+  switchIsLoggedIn: () => set((state) => ({ isLoggedIn: !state.isLoggedIn })),
 
   setSummerToys: (newToyList) => {
     set(() => ({ storeToysList: newToyList }));

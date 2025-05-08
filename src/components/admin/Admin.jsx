@@ -18,7 +18,7 @@ function Admin() {
         </thead>
         <tbody>
           {storeToysList.map((toy) => (
-            <tr className="product-on-edit">
+            <tr key={toy.id} className="product-on-edit">
               <td className="edit-buttons">
                 <p>
                   <button>Ta bort</button>

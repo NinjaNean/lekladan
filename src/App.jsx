@@ -11,7 +11,7 @@ import crossIcon from "./assets/close.svg";
 import HamburgerMenu from "./components/HamburgerMenu";
 
 function App() {
-  const { toggleMenu, isMenuOpen, setSummerToys, cartList } = useMenuStore();
+  const { toggleMenu, isMenuOpen, setSummerToys, cartList, isLoggedIn } = useMenuStore();
 
   useEffect(() => {
     getSummerToys(setSummerToys);
@@ -38,10 +38,14 @@ function App() {
           Leklådan
         </NavLink>
 
-        <NavLink className="cart-button-flex" to={"/cart"}>
-          {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
-          <img className="cart-button" src={cartIcon} alt="cart store icon" />
-        </NavLink>
+        {isLoggedIn ? (
+          <button className="sign-out">Logga ut</button>
+        ) : (
+          <NavLink className="cart-button-flex" to={"/cart"}>
+            {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
+            <img className="cart-button" src={cartIcon} alt="cart store icon" />
+          </NavLink>
+        )}
       </header>
 
       <Outlet />
@@ -59,6 +63,7 @@ function App() {
           </div>
         </section>
         <p>© 2025 Leklådan</p>
+
         <NavLink to="/login">
           <img src={login} alt="" />
         </NavLink>
