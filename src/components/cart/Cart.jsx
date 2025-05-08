@@ -2,7 +2,6 @@ import React from "react";
 import "./Cart.css";
 import { useMenuStore } from "../../data/store";
 import { NavLink } from "react-router";
-import trashCan from "../../assets/close.svg";
 
 function Cart() {
   const { cartList, addToCart, removeFromCart } = useMenuStore();
@@ -26,6 +25,7 @@ function Cart() {
       ) : (
         <>
           <section className="cart">
+            <h1>Din kundvagn</h1>
             {cartList.map((toy) => (
               <div key={toy.id} className="cart-product">
                 <img src={toy.img} alt="product img" />
@@ -36,9 +36,7 @@ function Cart() {
                 </div>
 
                 <div className="cart-buttons">
-                  <button disabled={toy.quantity === 1} onClick={() => removeFromCart(toy)}>
-                    -
-                  </button>
+                  <button onClick={() => removeFromCart(toy)}>-</button>
                   <p>{toy.quantity}</p>
                   <button onClick={() => addToCart(toy)}>+</button>
                 </div>
@@ -47,12 +45,16 @@ function Cart() {
 
             <section className="total">
               <div>
-                <p>Totalt pris</p>
-                <p>{totalPrice()}:-</p>
+                <p>Antal:</p>
+                <p>{totalProducts()}st</p>
               </div>
               <div>
-                <p>Antal produkter</p>
-                <p>{totalProducts()} st</p>
+                <p>Frakt:</p>
+                <p>Gratis</p>
+              </div>
+              <div>
+                <h3>Totalt:</h3>
+                <h3>{totalPrice()}:-</h3>
               </div>
             </section>
 

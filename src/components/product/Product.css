@@ -18,10 +18,20 @@
   }
 }
 
+.no-search-results {
+  display: flex;
+  justify-content: center;
+  min-height: 100px;
+  align-items: center;
+  font-size: 22px;
+}
+
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 7rem;
+  justify-items: center;
+  max-width: 1550px;
   margin: 3rem 1rem;
 }
 
@@ -64,10 +74,40 @@
       text-decoration: line-through;
     }
   }
+
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    cursor: pointer;
+    background-color: var(--yellow-color);
+    font-size: 20px;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s;
+    text-transform: uppercase;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #ffd500;
+      }
+
+      &:active {
+        scale: 1.1;
+      }
+    }
+    @media (hover: none) {
+      &:active {
+        background-color: #ffd500;
+        scale: 1.1;
+      }
+    }
+  }
 }
 
 @media (min-width: 500px) {
   .products {
-    margin: 5rem;
+    margin: 5rem auto;
+    padding: 0 3rem;
   }
 }

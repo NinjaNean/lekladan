@@ -1,16 +1,17 @@
 import { NavLink, Outlet } from "react-router";
 import "./App.css";
-import menuIcon from "./assets/jam_menu.svg";
-import crossIcon from "./assets/close.svg";
 import cartIcon from "./assets/mdi_cart-outline.svg";
-import HamburgerMenu from "./components/HamburgerMenu";
 import { useEffect } from "react";
 import { getSummerToys } from "./data/crud";
 import { useMenuStore } from "./data/store";
 import ScrollToTop from "./components/ScrollToTop";
+import login from "./assets/icons8-login-50.png";
+import menuIcon from "./assets/jam_menu.svg";
+import crossIcon from "./assets/close.svg";
+import HamburgerMenu from "./components/HamburgerMenu";
 
 function App() {
-  const { toggleMenu, isMenuOpen, setSummerToys, cartList } = useMenuStore();
+  const { toggleMenu, isMenuOpen, setSummerToys, cartList, isLoggedIn } = useMenuStore();
 
   useEffect(() => {
     getSummerToys(setSummerToys);
@@ -24,23 +25,27 @@ function App() {
     <>
       <ScrollToTop />
       <header>
-        {/* <HamburgerMenu />
+        <HamburgerMenu />
 
         <img
           onClick={toggleMenu}
           className="hamburger-button"
           src={isMenuOpen ? crossIcon : menuIcon}
           alt="hamburger menu icon"
-        /> */}
+        />
 
         <NavLink to={"/"} className="logo">
           Leklådan
         </NavLink>
 
-        <NavLink className="cart-button-flex" to={"/cart"}>
-          {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
-          <img className="cart-button" src={cartIcon} alt="cart store icon" />
-        </NavLink>
+        {isLoggedIn ? (
+          <button className="sign-out">Logga ut</button>
+        ) : (
+          <NavLink className="cart-button-flex" to={"/cart"}>
+            {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
+            <img className="cart-button" src={cartIcon} alt="cart store icon" />
+          </NavLink>
+        )}
       </header>
 
       <Outlet />
@@ -58,6 +63,10 @@ function App() {
           </div>
         </section>
         <p>© 2025 Leklådan</p>
+
+        <NavLink to="/login">
+          <img src={login} alt="" />
+        </NavLink>
       </footer>
     </>
   );

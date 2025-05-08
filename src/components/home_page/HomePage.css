@@ -21,6 +21,7 @@
 
     img {
       max-width: 100dvw;
+      border-radius: 0.5rem;
     }
 
     div {
