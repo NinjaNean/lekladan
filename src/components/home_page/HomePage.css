@@ -5,22 +5,58 @@
     object-fit: cover;
   }
 
-  .selected-products {
+  .categorys {
     display: flex;
-    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem;
+
+    div {
+      position: relative;
+      display: flex;
+      flex-grow: 1;
+
+      img {
+        flex-grow: 1;
+        aspect-ratio: 4/3;
+        max-height: 320px;
+        object-fit: cover;
+        opacity: 0.8;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      p {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        translate: -50% -50%;
+        font-weight: bold;
+        font-size: 30px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        font-family: "Joti One", serif;
+      }
+    }
   }
 
   .lekladan-presentation {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     align-items: center;
     gap: 3rem;
-    margin: 5rem 1rem;
+    margin: 1rem;
 
     img {
-      max-width: 100dvw;
+      max-width: 90dvw;
       border-radius: 0.5rem;
     }
 
@@ -39,6 +75,12 @@
     .lekladan-presentation {
       margin: 1rem 1rem 0;
       gap: 1.5rem;
+    }
+
+    .categorys {
+      img {
+        max-width: 90dvw;
+      }
     }
   }
 }

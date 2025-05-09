@@ -3,6 +3,10 @@ import heroImg from "../../assets/pexels-photo-6137955.jpeg";
 import "./HomePage.css";
 import "../product/Product.css";
 import { NavLink } from "react-router";
+import beachImg from "../../assets/beach.jpg";
+import outsideImg from "../../assets/outside.webp";
+import sportImg from "../../assets/sport.webp";
+import waterImg from "../../assets/water.webp";
 
 function HomePage() {
   return (
@@ -29,6 +33,25 @@ function HomePage() {
           <NavLink className="button" to={"/products"}>
             Gå till produkterna
           </NavLink>
+        </div>
+      </section>
+
+      <section className="categorys">
+        <div>
+          <img src={outsideImg} />
+          <p>Uteleksaker</p>
+        </div>
+        <div>
+          <img src={sportImg} />
+          <p>Rörelse & Sport</p>
+        </div>
+        <div>
+          <img src={beachImg} />
+          <p>Till stranden</p>
+        </div>
+        <div>
+          <img src={waterImg} />
+          <p>Vattenleksaker</p>
         </div>
       </section>
     </main>

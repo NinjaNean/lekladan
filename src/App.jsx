@@ -24,50 +24,49 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <header>
-        <HamburgerMenu />
+      {isLoggedIn || (
+        <header>
+          <HamburgerMenu />
 
-        <img
-          onClick={toggleMenu}
-          className="hamburger-button"
-          src={isMenuOpen ? crossIcon : menuIcon}
-          alt="hamburger menu icon"
-        />
+          <img
+            onClick={toggleMenu}
+            className="hamburger-button"
+            src={isMenuOpen ? crossIcon : menuIcon}
+            alt="hamburger menu icon"
+          />
 
-        <NavLink to={"/"} className="logo">
-          Leklådan
-        </NavLink>
-
-        {isLoggedIn ? (
-          <button className="sign-out">Logga ut</button>
-        ) : (
-          <NavLink className="cart-button-flex" to={"/cart"}>
-            {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
-            <img className="cart-button" src={cartIcon} alt="cart store icon" />
-          </NavLink>
-        )}
-      </header>
-
-      <Outlet />
-
-      <footer>
-        <section>
           <NavLink to={"/"} className="logo">
             Leklådan
           </NavLink>
 
-          <div>
-            <h2>Kontakta oss</h2>
-            <p>leklada@hotmail.se</p>
-            <p>031 01 23 34</p>
-          </div>
-        </section>
-        <p>© 2025 Leklådan</p>
+          <NavLink className="cart-button-flex" to={"/cart"}>
+            {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
+            <img className="cart-button" src={cartIcon} alt="cart store icon" />
+          </NavLink>
+        </header>
+      )}
 
-        <NavLink to="/login">
-          <img src={login} alt="" />
-        </NavLink>
-      </footer>
+      <Outlet />
+      {isLoggedIn || (
+        <footer>
+          <section>
+            <NavLink to={"/"} className="logo">
+              Leklådan
+            </NavLink>
+
+            <div>
+              <h2>Kontakta oss</h2>
+              <p>leklada@hotmail.se</p>
+              <p>031 01 23 34</p>
+            </div>
+          </section>
+          <p>© 2025 Leklådan</p>
+
+          <NavLink to="/login">
+            <img src={login} alt="" />
+          </NavLink>
+        </footer>
+      )}
     </>
   );
 }

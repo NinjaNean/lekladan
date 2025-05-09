@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Admin.css";
-import { NavLink, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useMenuStore } from "../../data/store";
 
 function Login() {

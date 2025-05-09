@@ -58,6 +58,12 @@
 .admin-page {
   margin: 1rem auto;
 
+  .admin-buttons {
+    padding: 0.5rem 1rem;
+    margin: 0 1rem 1rem 0;
+    cursor: pointer;
+  }
+
   table {
     border-collapse: collapse;
   }
@@ -66,14 +72,14 @@
     background-color: var(--blue-color);
 
     th {
-      padding: 1.5rem 5rem;
+      padding: 1.5rem 3rem;
     }
   }
 
   tbody {
     .product-on-edit {
       .edit-buttons {
-        border-bottom: 1px solid black;
+        border-top: 1px solid black;
 
         button {
           border: none;
@@ -89,7 +95,7 @@
       }
 
       td:not(.edit-buttons) {
-        border-bottom: 1px solid black;
+        border-top: 1px solid black;
         padding: 1rem;
         text-align: center;
       }
