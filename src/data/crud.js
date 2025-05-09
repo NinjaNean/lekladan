@@ -1,8 +1,10 @@
 import { db } from "./firestore";
 import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 
+const collectionName = "summerToys";
+
 async function getSummerToys(setSummerToys) {
-  const summerToysCollection = collection(db, "summerToys");
+  const summerToysCollection = collection(db, collectionName);
   const summerToysSnapshot = await getDocs(summerToysCollection);
   const summerToysList = summerToysSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
@@ -22,7 +24,7 @@ async function getSummerToys(setSummerToys) {
 
 async function addSummerToys(setSummerToys, summerToysObject) {
   try {
-    const summerToysCollection = collection(db, "summerToys");
+    const summerToysCollection = collection(db, collectionName);
     const newSummerToyRef = await addDoc(summerToysCollection, summerToysObject);
 
     getSummerToys(setSummerToys);
@@ -34,7 +36,7 @@ async function addSummerToys(setSummerToys, summerToysObject) {
 }
 
 async function removeSummerToy(setSummerToys, toyId) {
-  const summerToyDocRef = doc(db, "sommerToys", toyId);
+  const summerToyDocRef = doc(db, collectionName, toyId);
   await deleteDoc(summerToyDocRef);
   getSummerToys(setSummerToys);
 }
