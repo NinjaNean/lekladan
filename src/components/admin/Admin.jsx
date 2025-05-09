@@ -57,8 +57,8 @@ function Admin() {
           <p>Felmedelande</p>
 
           <div className="add-toy-buttons">
-            <button>Lägg till</button>
             <button onClick={() => setAddToy(false)}>Avbryt</button>
+            <button>Lägg till</button>
           </div>
         </form>
       )}

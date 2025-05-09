@@ -47,6 +47,7 @@ function App() {
       )}
 
       <Outlet />
+
       {isLoggedIn || (
         <footer>
           <section>
