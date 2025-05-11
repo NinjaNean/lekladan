@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMenuStore } from "../../data/store";
 import { useNavigate } from "react-router";
 import { removeSummerToy } from "../../data/crud";
+import AddToyForm from "./AddToyForm";
 
 function Admin() {
   const { storeToysList, switchIsLoggedIn, setSummerToys } = useMenuStore();
@@ -26,42 +27,7 @@ function Admin() {
         Logga ut
       </button>
 
-      {addToy && (
-        <form action="" className="add-toy">
-          <h1>Lägg till en leksak</h1>
-
-          <input type="url" placeholder="Bild *" />
-          <p>Felmedelande</p>
-
-          <input type="text" placeholder="Namn *" />
-          <p>Felmedelande</p>
-
-          <input type="text" placeholder="Beskrivning *" />
-          <p>Felmedelande</p>
-
-          <select name="caregory">
-            <option value="" disabled>
-              Kategori *
-            </option>
-            <option value="">Uteleksaker</option>
-            <option value="">Till stranden</option>
-            <option value="">Vattenlek</option>
-            <option value="">Rörelse & Sport</option>
-          </select>
-          <p>Felmedelande</p>
-
-          <input type="number" placeholder="Pris *" />
-          <p>Felmedelande</p>
-
-          <input type="number" placeholder="Rabatt" />
-          <p>Felmedelande</p>
-
-          <div className="add-toy-buttons">
-            <button onClick={() => setAddToy(false)}>Avbryt</button>
-            <button>Lägg till</button>
-          </div>
-        </form>
-      )}
+      {addToy && <AddToyForm setAddToy={setAddToy} />}
 
       <table>
         <thead>

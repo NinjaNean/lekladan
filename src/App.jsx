@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useLocation } from "react-router";
 import "./App.css";
 import cartIcon from "./assets/mdi_cart-outline.svg";
 import { useEffect } from "react";
@@ -11,7 +11,8 @@ import crossIcon from "./assets/close.svg";
 import HamburgerMenu from "./components/HamburgerMenu";
 
 function App() {
-  const { toggleMenu, isMenuOpen, setSummerToys, cartList, isLoggedIn } = useMenuStore();
+  const { toggleMenu, isMenuOpen, setSummerToys, cartList } = useMenuStore();
+  const location = useLocation();
 
   useEffect(() => {
     getSummerToys(setSummerToys);
@@ -24,7 +25,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      {isLoggedIn || (
+      {location.pathname !== "/admin" && (
         <header>
           <HamburgerMenu />
 
@@ -48,7 +49,7 @@ function App() {
 
       <Outlet />
 
-      {isLoggedIn || (
+      {location.pathname !== "/admin" && (
         <footer>
           <section>
             <NavLink to={"/"} className="logo">

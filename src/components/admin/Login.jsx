@@ -22,26 +22,33 @@ function Login() {
     <main className="login-page">
       <h1>Logga in som administratör</h1>
 
-      <div>
-        <img src="https://img.icons8.com/?size=100&id=ywULFSPkh4kI&format=png&color=000000" alt="" />
-        <input
-          type="text"
-          placeholder="Användarnman"
-          onChange={(e) => setUserInput((prev) => ({ ...prev, userName: e.target.value }))}
-        />
-      </div>
-      <div>
-        <img src="https://img.icons8.com/?size=100&id=2862&format=png&color=000000" alt="" />
-        <input
-          type="password"
-          placeholder="Lösenord"
-          onChange={(e) => setUserInput((prev) => ({ ...prev, password: e.target.value }))}
-        />
-      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleLogin();
+        }}
+      >
+        <div>
+          <img src="https://img.icons8.com/?size=100&id=ywULFSPkh4kI&format=png&color=000000" alt="" />
+          <input
+            type="text"
+            placeholder="Användarnman"
+            onChange={(e) => setUserInput((prev) => ({ ...prev, userName: e.target.value }))}
+          />
+        </div>
+        <div>
+          <img src="https://img.icons8.com/?size=100&id=2862&format=png&color=000000" alt="" />
+          <input
+            type="password"
+            placeholder="Lösenord"
+            onChange={(e) => setUserInput((prev) => ({ ...prev, password: e.target.value }))}
+          />
+        </div>
 
-      <p>{errorMessages}</p>
+        <p>{errorMessages}</p>
 
-      <button onClick={handleLogin}>Logga in</button>
+        <button type="submit">Logga in</button>
+      </form>
     </main>
   );
 }
