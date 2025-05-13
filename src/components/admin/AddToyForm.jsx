@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { schema } from "../../data/joiSchema";
+import { useState } from "react";
+import { handleSubmit } from "../../data/joiSchema";
+import { addSummerToys } from "../../data/crud";
+import { useMenuStore } from "../../data/store";
 
 function AddToyForm({ setAddToy }) {
+  const { setSummerToys } = useMenuStore();
   const [toyData, setToyData] = useState({
-    url: "",
+    img: "",
     name: "",
     description: "",
     category: "",
@@ -11,49 +14,59 @@ function AddToyForm({ setAddToy }) {
     discount: 0,
   });
 
-  const handleSubmit = () => {
-    const results = schema.validate(toyData);
+  const [validation, setValidation] = useState({
+    css: {},
+    message: {},
+  });
 
-    if (results.error) {
-      //lägg kod för error.
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const { css, message, formIsValid } = handleSubmit(toyData);
+    setValidation({ css, message });
+
+    if (formIsValid) {
+      console.log("Submitting", toyData);
+      setAddToy(false);
+      addSummerToys(setSummerToys, toyData);
     }
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-      className="add-toy"
-    >
+    <form onSubmit={handleFormSubmit} className="add-toy">
       <h1>Lägg till en leksak</h1>
 
       <input
-        type="url"
+        className={validation.css.img}
+        type="text"
         placeholder="Bild *"
-        onChange={(e) => setToyData((prev) => ({ ...prev, url: e.target.value }))}
-        value={toyData.url}
+        onChange={(e) => setToyData((prev) => ({ ...prev, img: e.target.value }))}
+        value={toyData.img}
       />
-      <p>Felmedelande</p>
+      <p className="error">{validation.message.img}</p>
 
       <input
+        className={validation.css.name}
         type="text"
         placeholder="Namn *"
         onChange={(e) => setToyData((prev) => ({ ...prev, name: e.target.value }))}
         value={toyData.name}
       />
-      <p>Felmedelande</p>
+      <p className="error">{validation.message.name}</p>
 
       <input
+        className={validation.css.description}
         type="text"
         placeholder="Beskrivning *"
         onChange={(e) => setToyData((prev) => ({ ...prev, description: e.target.value }))}
         value={toyData.description}
       />
-      <p>Felmedelande</p>
+      <p className="error">{validation.message.description}</p>
 
-      <select name="category" onChange={(e) => setToyData((prev) => ({ ...prev, category: e.target.value }))}>
+      <select
+        className={validation.css.category}
+        name="category"
+        onChange={(e) => setToyData((prev) => ({ ...prev, category: e.target.value }))}
+      >
         <option value="" disabled>
           Kategori *
         </option>
@@ -62,23 +75,25 @@ function AddToyForm({ setAddToy }) {
         <option value="water">Vattenlek</option>
         <option value="sport">Rörelse & Sport</option>
       </select>
-      <p>Felmedelande</p>
+      <p className="error">{validation.message.category}</p>
 
       <input
+        className={validation.css.price}
         type="number"
         placeholder="Pris *"
         onChange={(e) => setToyData((prev) => ({ ...prev, price: e.target.value }))}
         value={toyData.price}
       />
-      <p>Felmedelande</p>
+      <p className="error">{validation.message.price}</p>
 
       <input
+        className={validation.css.discount}
         type="number"
         placeholder="Rabatt"
         onChange={(e) => setToyData((prev) => ({ ...prev, discount: e.target.value }))}
         value={toyData.discount}
       />
-      <p>Felmedelande</p>
+      <p className="error">{validation.message.discount}</p>
 
       <div className="add-toy-buttons">
         <button onClick={() => setAddToy(false)}>Avbryt</button>

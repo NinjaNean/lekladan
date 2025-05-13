@@ -5,61 +5,45 @@ header {
   padding: 1rem;
   background-color: var(--orange-color);
 
-  .hamburger-menu {
-    background-color: var(--green-color);
-    position: fixed;
-    top: 0;
-    left: -150%;
-    height: 100dvh;
-    width: 100dvw;
-    max-width: 400px;
-    transition: all 0.5s ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.35) 5px 0px 15px;
-    z-index: 1;
-    padding: 5rem;
-
-    &.open-menu {
-      left: 0;
-    }
-  }
-
-  .hamburger-button {
-    cursor: pointer;
-    z-index: 2;
-
-    &:active {
-      .hamburger-menu {
-        left: 0;
-      }
-    }
-  }
-
-  .cart-button-flex {
+  .menu-flex {
     display: flex;
-    text-decoration: none;
-    transition: transform 0.8s;
-    position: relative;
+    align-items: center;
+    gap: 1rem;
 
-    .cart-quantity {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: white;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      position: absolute;
-      right: -5px;
-      top: -5px;
-      font-size: 20px;
-    }
-
-    &:hover {
-      scale: 1.1;
-    }
-
-    &:active {
+    a {
+      font-size: clamp(16px, 4vw, 20px);
+      text-decoration: none;
       color: black;
+      font-weight: bold;
+    }
+
+    .cart-button-flex {
+      display: flex;
+      text-decoration: none;
+      transition: transform 0.8s;
+      position: relative;
+
+      .cart-quantity {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        font-size: 20px;
+      }
+
+      &:hover {
+        scale: 1.1;
+      }
+
+      &:active {
+        color: black;
+      }
     }
   }
 }
@@ -67,7 +51,7 @@ header {
 .logo {
   cursor: pointer;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   color: black;
   font-family: "Joti One", serif;
 }

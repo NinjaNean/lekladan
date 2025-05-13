@@ -60,6 +60,7 @@
 
 .admin-page {
   margin: 1rem auto;
+  padding: 1rem;
 
   .admin-buttons {
     padding: 0.5rem 1rem;
@@ -80,6 +81,12 @@
     translate: -50% -50%;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
+    .error {
+      height: 35px;
+      padding: 2px 5px;
+      color: #d21010;
+    }
+
     h1 {
       margin-bottom: 1rem;
     }
@@ -90,10 +97,6 @@
 
     select {
       padding: 0.5rem 1.5rem;
-    }
-
-    p {
-      height: 30px;
     }
 
     .add-toy-buttons {

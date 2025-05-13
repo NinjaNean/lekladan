@@ -27,23 +27,18 @@ function App() {
       <ScrollToTop />
       {location.pathname !== "/admin" && (
         <header>
-          <HamburgerMenu />
-
-          <img
-            onClick={toggleMenu}
-            className="hamburger-button"
-            src={isMenuOpen ? crossIcon : menuIcon}
-            alt="hamburger menu icon"
-          />
-
           <NavLink to={"/"} className="logo">
             Leklådan
           </NavLink>
 
-          <NavLink className="cart-button-flex" to={"/cart"}>
-            {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
-            <img className="cart-button" src={cartIcon} alt="cart store icon" />
-          </NavLink>
+          <div className="menu-flex">
+            <NavLink to={"/products"}>Produkter</NavLink>
+
+            <NavLink className="cart-button-flex" to={"/cart"}>
+              {productInCart() > 0 && <p className="cart-quantity">{productInCart()}</p>}
+              <img className="cart-button" src={cartIcon} alt="cart store icon" />
+            </NavLink>
+          </div>
         </header>
       )}
 
