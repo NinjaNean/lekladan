@@ -25,7 +25,7 @@ function Cart() {
       ) : (
         <>
           <section className="cart">
-            <h1>Din kundvagn</h1>
+            {/* <h1>Din kundvagn</h1> */}
             {cartList.map((toy) => (
               <div key={toy.id} className="cart-product">
                 <img src={toy.img} alt="product img" />
@@ -58,7 +58,7 @@ function Cart() {
               </div>
             </section>
 
-            <button>Gå till betalning</button>
+            {/* <button>Gå till betalning</button> */}
           </section>
         </>
       )}
