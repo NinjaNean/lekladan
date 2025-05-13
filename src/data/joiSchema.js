@@ -34,6 +34,8 @@ function handleSubmit(toyData) {
   };
 
   const results = schema.validate(toyData);
+  console.log("validering: ", toyData);
+  console.log(results);
 
   if (results.error) {
     results.error.details.forEach((e) => {

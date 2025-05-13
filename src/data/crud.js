@@ -1,5 +1,5 @@
 import { db } from "./firestore";
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 
 const collectionName = "summerToys";
 
@@ -41,4 +41,14 @@ async function removeSummerToy(setSummerToys, toyId) {
   getSummerToys(setSummerToys);
 }
 
-export { getSummerToys, addSummerToys, removeSummerToy };
+async function editSummerToy(setSummerToys, toyId, summerToysObject) {
+  const summerToyDocRef = doc(db, collectionName, toyId);
+  try {
+    await updateDoc(summerToyDocRef, summerToysObject);
+    getSummerToys(setSummerToys);
+  } catch (e) {
+    console.error("Fel vid uppdatering av dokument: ", e);
+  }
+}
+
+export { getSummerToys, addSummerToys, removeSummerToy, editSummerToy };

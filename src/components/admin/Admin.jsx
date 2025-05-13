@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMenuStore } from "../../data/store";
 import { useNavigate } from "react-router";
-import { removeSummerToy } from "../../data/crud";
 import AddToyForm from "./AddToyForm";
+import Product from "./Product";
 
 function Admin() {
-  const { storeToysList, switchIsLoggedIn, setSummerToys } = useMenuStore();
+  const { storeToysList, switchIsLoggedIn } = useMenuStore();
   const navigate = useNavigate();
-  const [editToy, setEditToy] = useState(false);
+
   const [addToy, setAddToy] = useState(false);
+  const [editToy, setEditToy] = useState(null);
 
   function signOut() {
     navigate("/");
@@ -17,9 +18,6 @@ function Admin() {
 
   return (
     <main className="admin-page">
-      <button className="admin-buttons" onClick={() => setEditToy()}>
-        Redigera
-      </button>
       <button className="admin-buttons" onClick={() => setAddToy(true)}>
         Lägg till
       </button>
@@ -27,7 +25,8 @@ function Admin() {
         Logga ut
       </button>
 
-      {addToy && <AddToyForm setAddToy={setAddToy} />}
+      {addToy && <AddToyForm switchFormState={setAddToy} />}
+      {editToy && <AddToyForm switchFormState={setEditToy} toy={editToy} />}
 
       <table>
         <thead>
@@ -43,21 +42,7 @@ function Admin() {
         </thead>
         <tbody>
           {storeToysList.map((toy) => (
-            <tr key={toy.id} className="product-on-edit">
-              <td className="edit-buttons">
-                <p>
-                  <button onClick={() => removeSummerToy(setSummerToys, toy.id)}>Ta bort</button>
-                </p>
-              </td>
-              <td>
-                <img src={toy.img} alt="toy" />
-              </td>
-              <td>{toy.name}</td>
-              <td>{toy.description}</td>
-              <td>{toy.category}</td>
-              <td>{toy.oldPrice ? toy.oldPrice : toy.price}:-</td>
-              <td>{toy.discount}%</td>
-            </tr>
+            <Product key={toy.id} toy={toy} setEditToy={() => setEditToy(toy)} />
           ))}
         </tbody>
       </table>

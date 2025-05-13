@@ -1,18 +1,25 @@
 import { useState } from "react";
 import { handleSubmit } from "../../data/joiSchema";
-import { addSummerToys } from "../../data/crud";
+import { addSummerToys, editSummerToy } from "../../data/crud";
 import { useMenuStore } from "../../data/store";
 
-function AddToyForm({ setAddToy }) {
+function AddToyForm({ switchFormState, toy }) {
   const { setSummerToys } = useMenuStore();
-  const [toyData, setToyData] = useState({
-    img: "",
-    name: "",
-    description: "",
-    category: "",
-    price: 0,
-    discount: 0,
-  });
+  const isEdit = toy === undefined ? false : true;
+  const defaultToy = toy
+    ? { ...toy }
+    : {
+        img: "",
+        name: "",
+        description: "",
+        category: "",
+        price: 0,
+        discount: 0,
+      };
+  delete defaultToy.id;
+  delete defaultToy.oldPrice;
+
+  const [toyData, setToyData] = useState(defaultToy);
 
   const [validation, setValidation] = useState({
     css: {},
@@ -26,80 +33,87 @@ function AddToyForm({ setAddToy }) {
 
     if (formIsValid) {
       console.log("Submitting", toyData);
-      setAddToy(false);
-      addSummerToys(setSummerToys, toyData);
+
+      if (isEdit) {
+        editSummerToy(setSummerToys, toy.id, toyData);
+      } else {
+        addSummerToys(setSummerToys, toyData);
+      }
+      switchFormState(false);
     }
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className="add-toy">
-      <h1>Lägg till en leksak</h1>
+    <div className="modal">
+      <form onSubmit={handleFormSubmit} className="add-toy">
+        <h1>Lägg till en leksak</h1>
 
-      <input
-        className={validation.css.img}
-        type="text"
-        placeholder="Bild *"
-        onChange={(e) => setToyData((prev) => ({ ...prev, img: e.target.value }))}
-        value={toyData.img}
-      />
-      <p className="error">{validation.message.img}</p>
+        <input
+          className={validation.css.img}
+          type="text"
+          placeholder="Bild *"
+          onChange={(e) => setToyData((prev) => ({ ...prev, img: e.target.value }))}
+          value={toyData.img}
+        />
+        <p className="error">{validation.message.img}</p>
 
-      <input
-        className={validation.css.name}
-        type="text"
-        placeholder="Namn *"
-        onChange={(e) => setToyData((prev) => ({ ...prev, name: e.target.value }))}
-        value={toyData.name}
-      />
-      <p className="error">{validation.message.name}</p>
+        <input
+          className={validation.css.name}
+          type="text"
+          placeholder="Namn *"
+          onChange={(e) => setToyData((prev) => ({ ...prev, name: e.target.value }))}
+          value={toyData.name}
+        />
+        <p className="error">{validation.message.name}</p>
 
-      <input
-        className={validation.css.description}
-        type="text"
-        placeholder="Beskrivning *"
-        onChange={(e) => setToyData((prev) => ({ ...prev, description: e.target.value }))}
-        value={toyData.description}
-      />
-      <p className="error">{validation.message.description}</p>
+        <input
+          className={validation.css.description}
+          type="text"
+          placeholder="Beskrivning *"
+          onChange={(e) => setToyData((prev) => ({ ...prev, description: e.target.value }))}
+          value={toyData.description}
+        />
+        <p className="error">{validation.message.description}</p>
 
-      <select
-        className={validation.css.category}
-        name="category"
-        onChange={(e) => setToyData((prev) => ({ ...prev, category: e.target.value }))}
-      >
-        <option value="" disabled>
-          Kategori *
-        </option>
-        <option value="outside">Uteleksaker</option>
-        <option value="beach">Till stranden</option>
-        <option value="water">Vattenlek</option>
-        <option value="sport">Rörelse & Sport</option>
-      </select>
-      <p className="error">{validation.message.category}</p>
+        <select
+          className={validation.css.category}
+          name="category"
+          onChange={(e) => setToyData((prev) => ({ ...prev, category: e.target.value }))}
+        >
+          <option value="" disabled>
+            Kategori *
+          </option>
+          <option value="Uteleksaker">Uteleksaker</option>
+          <option value="Till stranden">Till stranden</option>
+          <option value="Vattenlek">Vattenlek</option>
+          <option value="Rörelse & Sport">Rörelse & Sport</option>
+        </select>
+        <p className="error">{validation.message.category}</p>
 
-      <input
-        className={validation.css.price}
-        type="number"
-        placeholder="Pris *"
-        onChange={(e) => setToyData((prev) => ({ ...prev, price: e.target.value }))}
-        value={toyData.price}
-      />
-      <p className="error">{validation.message.price}</p>
+        <input
+          className={validation.css.price}
+          type="number"
+          placeholder="Pris *"
+          onChange={(e) => setToyData((prev) => ({ ...prev, price: e.target.value }))}
+          value={toyData.price}
+        />
+        <p className="error">{validation.message.price}</p>
 
-      <input
-        className={validation.css.discount}
-        type="number"
-        placeholder="Rabatt"
-        onChange={(e) => setToyData((prev) => ({ ...prev, discount: e.target.value }))}
-        value={toyData.discount}
-      />
-      <p className="error">{validation.message.discount}</p>
+        <input
+          className={validation.css.discount}
+          type="number"
+          placeholder="Rabatt"
+          onChange={(e) => setToyData((prev) => ({ ...prev, discount: e.target.value }))}
+          value={toyData.discount}
+        />
+        <p className="error">{validation.message.discount}</p>
 
-      <div className="add-toy-buttons">
-        <button onClick={() => setAddToy(false)}>Avbryt</button>
-        <button type="submit">Lägg till</button>
-      </div>
-    </form>
+        <div className="add-toy-buttons">
+          <button onClick={() => switchFormState(false)}>Avbryt</button>
+          <button type="submit">Lägg till</button>
+        </div>
+      </form>
+    </div>
   );
 }
 
