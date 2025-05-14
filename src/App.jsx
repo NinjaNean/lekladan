@@ -6,12 +6,9 @@ import { getSummerToys } from "./data/crud";
 import { useMenuStore } from "./data/store";
 import ScrollToTop from "./components/ScrollToTop";
 import login from "./assets/icons8-login-50.png";
-import menuIcon from "./assets/jam_menu.svg";
-import crossIcon from "./assets/close.svg";
-import HamburgerMenu from "./components/HamburgerMenu";
 
 function App() {
-  const { toggleMenu, isMenuOpen, setSummerToys, cartList } = useMenuStore();
+  const { setSummerToys, cartList } = useMenuStore();
   const location = useLocation();
 
   useEffect(() => {

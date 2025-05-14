@@ -1,4 +1,3 @@
-import React from "react";
 import heroImg from "../../assets/pexels-photo-6137955.jpeg";
 import "./HomePage.css";
 import "../product/Product.css";
