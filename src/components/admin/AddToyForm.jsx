@@ -48,40 +48,44 @@ function AddToyForm({ switchFormState, toy }) {
       <form onSubmit={handleFormSubmit} className="add-toy">
         <h1>Lägg till en leksak</h1>
 
+        <label>Bild - URL</label>
         <input
           className={validation.css.img}
           type="text"
-          placeholder="Bild *"
+          placeholder="URL länk på leksaken..."
           onChange={(e) => setToyData((prev) => ({ ...prev, img: e.target.value }))}
           value={toyData.img}
         />
         <p className="error">{validation.message.img}</p>
 
+        <label>Namn</label>
         <input
           className={validation.css.name}
           type="text"
-          placeholder="Namn *"
+          placeholder="Vad är det för leksak..."
           onChange={(e) => setToyData((prev) => ({ ...prev, name: e.target.value }))}
           value={toyData.name}
         />
         <p className="error">{validation.message.name}</p>
 
+        <label>Beskrivning</label>
         <input
           className={validation.css.description}
           type="text"
-          placeholder="Beskrivning *"
+          placeholder="Här ska du beskriva leksaken..."
           onChange={(e) => setToyData((prev) => ({ ...prev, description: e.target.value }))}
           value={toyData.description}
         />
         <p className="error">{validation.message.description}</p>
 
+        <label>Kategori</label>
         <select
           className={validation.css.category}
           name="category"
           onChange={(e) => setToyData((prev) => ({ ...prev, category: e.target.value }))}
         >
           <option value="" disabled>
-            Kategori *
+            {toyData.category}
           </option>
           <option value="Uteleksaker">Uteleksaker</option>
           <option value="Till stranden">Till stranden</option>
@@ -90,19 +94,21 @@ function AddToyForm({ switchFormState, toy }) {
         </select>
         <p className="error">{validation.message.category}</p>
 
+        <label>Pris</label>
         <input
           className={validation.css.price}
           type="number"
-          placeholder="Pris *"
+          placeholder="Pris på leksaken..."
           onChange={(e) => setToyData((prev) => ({ ...prev, price: e.target.value }))}
           value={toyData.price}
         />
         <p className="error">{validation.message.price}</p>
 
+        <label>Procent rabatt</label>
         <input
           className={validation.css.discount}
           type="number"
-          placeholder="Rabatt"
+          placeholder="Här kan du rabattera leksaken..."
           onChange={(e) => setToyData((prev) => ({ ...prev, discount: e.target.value }))}
           value={toyData.discount}
         />

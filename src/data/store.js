@@ -1,7 +1,6 @@
 import { create } from "zustand";
 
 const useMenuStore = create((set, get) => ({
-  isMenuOpen: false,
   storeToysList: [],
   cartList: [],
   isLoggedIn: false,
@@ -11,8 +10,6 @@ const useMenuStore = create((set, get) => ({
   setSummerToys: (newToyList) => {
     set(() => ({ storeToysList: newToyList }));
   },
-
-  toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
 
   addToCart: (toy) => {
     const { cartList } = get();

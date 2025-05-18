@@ -34,25 +34,6 @@ function HomePage() {
           </NavLink>
         </div>
       </section>
-
-      <section className="categorys">
-        <div>
-          <img src={outsideImg} />
-          <p>Uteleksaker</p>
-        </div>
-        <div>
-          <img src={sportImg} />
-          <p>Rörelse & Sport</p>
-        </div>
-        <div>
-          <img src={beachImg} />
-          <p>Till stranden</p>
-        </div>
-        <div>
-          <img src={waterImg} />
-          <p>Vattenleksaker</p>
-        </div>
-      </section>
     </main>
   );
 }
