@@ -2,10 +2,6 @@ import heroImg from "../../assets/pexels-photo-6137955.jpeg";
 import "./HomePage.css";
 import "../product/Product.css";
 import { NavLink } from "react-router";
-import beachImg from "../../assets/beach.jpg";
-import outsideImg from "../../assets/outside.webp";
-import sportImg from "../../assets/sport.webp";
-import waterImg from "../../assets/water.webp";
 
 function HomePage() {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { handleSubmit } from "../../data/joiSchema";
 import { addSummerToys, editSummerToy } from "../../data/crud";
 import { useMenuStore } from "../../data/store";
+import { handleSubmit } from "../../helpers/JoiValidationFunction";
 
 function AddToyForm({ switchFormState, toy }) {
   const { setSummerToys } = useMenuStore();
@@ -32,8 +32,6 @@ function AddToyForm({ switchFormState, toy }) {
     setValidation({ css, message });
 
     if (formIsValid) {
-      console.log("Submitting", toyData);
-
       if (isEdit) {
         editSummerToy(setSummerToys, toy.id, toyData);
       } else {
@@ -83,10 +81,8 @@ function AddToyForm({ switchFormState, toy }) {
           className={validation.css.category}
           name="category"
           onChange={(e) => setToyData((prev) => ({ ...prev, category: e.target.value }))}
+          value={toyData.category}
         >
-          <option value="" disabled>
-            {toyData.category}
-          </option>
           <option value="Uteleksaker">Uteleksaker</option>
           <option value="Till stranden">Till stranden</option>
           <option value="Vattenlek">Vattenlek</option>

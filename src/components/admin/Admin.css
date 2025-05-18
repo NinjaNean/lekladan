@@ -62,10 +62,30 @@
   margin: 1rem auto;
   padding: 1rem;
 
-  .admin-buttons {
-    padding: 0.5rem 1rem;
-    margin: 0 1rem 1rem 0;
+  button {
+    padding: 0.8rem 2rem;
     cursor: pointer;
+    border: none;
+    background-color: var(--pink-color);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #d73c60;
+      }
+    }
+    @media (hover: none) {
+      &:active {
+        background-color: #d73c60;
+      }
+    }
+  }
+
+  .admin-buttons {
+    margin: 0 1rem 1rem 0;
   }
 
   .modal {
@@ -91,9 +111,20 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
     label {
-      padding: 0 5px;
+      padding: 0 5px 2px;
       font-weight: bold;
       font-size: 18px;
+    }
+
+    input,
+    select {
+      border-radius: 0.5rem;
+      border: none;
+      padding: 1rem 1.5rem;
+
+      &.invalid {
+        border-right: 1rem solid #d73c60;
+      }
     }
 
     .error {
@@ -104,14 +135,6 @@
 
     h1 {
       margin-bottom: 1rem;
-    }
-
-    input {
-      padding: 0.5rem 1.5rem;
-    }
-
-    select {
-      padding: 0.5rem 1.5rem;
     }
 
     .add-toy-buttons {

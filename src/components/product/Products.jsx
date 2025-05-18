@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useMenuStore } from "../../data/store";
 import Product from "./Product";
 import "./product.css";
+import sortToysBy from "../../helpers/SortToyFunction";
 
 function Products() {
   const { storeToysList } = useMenuStore();
@@ -12,58 +13,6 @@ function Products() {
     setRenderedList(storeToysList);
   }, [storeToysList]);
 
-  const sortToysBy = (e) => {
-    let sorted = [...renderedList];
-
-    switch (e) {
-      case "price-asc": {
-        sorted.sort((a, b) => {
-          return a.price - b.price;
-        });
-        break;
-      }
-      case "price-desc": {
-        sorted.sort((a, b) => {
-          return b.price - a.price;
-        });
-
-        break;
-      }
-      case "name-asc": {
-        sorted.sort((toy1, toy2) => {
-          let toyName1 = toy1.name;
-          let toyName2 = toy2.name;
-
-          if (toyName1 < toyName2) {
-            return -1;
-          }
-          if (toyName1 > toyName2) {
-            return 1;
-          }
-          return 0;
-        });
-        break;
-      }
-      case "name-desc": {
-        sorted.sort((toy1, toy2) => {
-          let toyName1 = toy1.name;
-          let toyName2 = toy2.name;
-
-          if (toyName1 < toyName2) {
-            return 1;
-          }
-          if (toyName1 > toyName2) {
-            return -1;
-          }
-          return 0;
-        });
-        break;
-      }
-    }
-
-    setRenderedList(sorted);
-  };
-
   const searchList = renderedList.filter((toy) => toy.name.toLowerCase().includes(inputText.toLowerCase()));
 
   return (
@@ -73,7 +22,12 @@ function Products() {
 
         <label className="sort-products" htmlFor="sort">
           Sortera efter
-          <select name="sort" id="sort" defaultValue="" onChange={(e) => sortToysBy(e.target.value)}>
+          <select
+            name="sort"
+            id="sort"
+            defaultValue=""
+            onChange={(e) => setRenderedList(sortToysBy(e.target.value, renderedList))}
+          >
             <option value="" disabled>
               -- Välj --
             </option>
